@@ -162,6 +162,9 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(0,0,0,0.1);
         }
   
         .skill-card:hover {
@@ -184,6 +187,69 @@
             color: #7f8c8d;
             font-size: 0.9rem;
             line-height: 1.4;
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+ 
+        .skill-meter {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+ 
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+ 
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+ 
+        .tag {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #2980b9;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+ 
+        .skill-card:hover .skill-progress {
+            animation: pulse 1.5s infinite;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+ 
+        .intro-card h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+ 
+        .intro-card p {
+            color: #34495e;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         @media (max-width: 768px) {
@@ -223,6 +289,24 @@
                 border-radius: 4px;
             }
         }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    
+        .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+    
+        .skill-card i {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+        }
+
     </style>
 </head>
 <body>
@@ -262,7 +346,8 @@
         </div>
         
         <ul class="nav-links">
-            <li class="nav-link active" onclick="scrollToSection('core-competencies')">Core Competencies</li>
+            <li class="nav-link active" onclick="scrollToSection('introduction')">Profile</li>
+            <li class="nav-link" onclick="scrollToSection('core-competencies')">Core Competencies</li>
             <li class="nav-link" onclick="scrollToSection('work-experience')">Work Experience</li>
             <li class="nav-link" onclick="scrollToSection('education')">Education</li>
             <li class="nav-link" onclick="scrollToSection('certifications')">Certifications</li>
@@ -271,13 +356,32 @@
 
     <!-- Main Content -->
     <main class="main-content">
+
+        <section id="introduction" class="section">
+            <h2>Professional Summary</h2>
+            <div>
+                <p>Results-driven Procurement and Business Analytics Professional with over 10 years of experience in sourcing, vendor management, procurement, and data-driven decision-making. Expertise in supplier negotiations, contract compliance, cost optimization, and financial analysis. Adept at streamlining procurement processes and leveraging data analytics for insights into purchasing and inventory management. Highly skilled in ERP systems, reporting, and stakeholder collaboration.</p>
+            </div>
+        </section>
+
+
         <section id="core-competencies" class="section">
             <h2>Core Competencies</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <i class="fas fa-shopping-cart"></i>
-                    <h3>Strategic Procurement</h3>
+                    <div class="skill-header">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Strategic Procurement</h3>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
                     <p>Procurement & Sourcing Strategy (IT Software/Hardware, Ingredients, Materials)</p>
+                    <div class="skill-tags">
+                        <span class="tag">Strategic Planning</span>
+                        <span class="tag">Cost Analysis</span>
+                        <span class="tag">Vendor Management</span>
+                    </div>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-handshake"></i>
@@ -362,21 +466,42 @@
             <h2>Education</h2>
             
             <div class="education-item">
-                <div class="degree">Master of Science in Computer Science</div>
-                <div class="school">University of Technology</div>
-                <div class="date">2015 - 2017</div>
+                <div class="degree">Post-Graduate Certificate in Supply Chain Management – Global Logistics</div>
+                <div class="school">Seneca Polytechnic</div>
+                <div class="date">2024 - Present</div>
                 <div class="description">
-                    <p>Specialized in Software Engineering and Artificial Intelligence. Completed thesis on "Improving Machine Learning Algorithms for Web Applications." Graduated with honors.</p>
+                    <p>Expected graduation date: April 2025<br>Running GPA: 4.0</p>
                 </div>
             </div>
             
             <div class="education-item">
-                <div class="degree">Bachelor of Science in Information Technology</div>
-                <div class="school">State University</div>
-                <div class="date">2011 - 2015</div>
+                <div class="degree">Post-Graduate Certificate in Business Analytics</div>
+                <div class="school">Seneca Polytechnic</div>
+                <div class="date">2023 - 2024</div>
                 <div class="description">
-                    <p>Dean's List all semesters. Participated in hackathons and coding competitions. Vice President of Computer Science Club.</p>
+                    <p>High Honors</p>
                 </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="degree">Bachelor in Library and Information Science</div>
+                <div class="school">University of the Philippines, Diliman</div>
+                <div class="date">2007 - 2010</div>
+            </div>
+            
+            <div class="education-item">
+                <div class="degree">Bachelor of Science in Business Economics</div>
+                <div class="school">University of the Philippines, Diliman</div>
+                <div class="date">2003 - 2007</div>
+                <div class="description">
+                    <p>Completed 2nd year</p>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="degree">Secondary School</div>
+                <div class="school">Manila Science High School</div>
+                <div class="date">1999 - 2003</div>
             </div>
         </section>
 
