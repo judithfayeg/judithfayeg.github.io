@@ -70,11 +70,17 @@
             list-style: none;
             margin-top: 2rem;
         }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
 
         .nav-link {
             padding: 0.8rem 0;
             cursor: pointer;
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -87,11 +93,13 @@
             flex: 1;
             margin-left: 280px;
             padding: 2rem;
+            scroll-margin-top: 2rem;
         }
 
         .section {
             margin-bottom: 3rem;
             padding-top: 2rem;
+            scroll-margin-top: 2rem;
         }
 
         h2 {
@@ -251,6 +259,62 @@
             line-height: 1.8;
             font-size: 1.1rem;
         }
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+ 
+        .role-summary {
+            color: #34495e;
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+ 
+        .description ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+ 
+        .description li {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+ 
+        .achievements {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+ 
+        .achievements h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+ 
+        .sub-info {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+ 
+        .location {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        .certification-item .achievement {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 4px;
+            display: inline-block;
+        }
 
         @media (max-width: 768px) {
             body {
@@ -345,12 +409,19 @@
             </div>
         </div>
         
-        <ul class="nav-links">
+        <!-- <ul class="nav-links">
             <li class="nav-link active" onclick="scrollToSection('introduction')">Profile</li>
             <li class="nav-link" onclick="scrollToSection('core-competencies')">Core Competencies</li>
             <li class="nav-link" onclick="scrollToSection('work-experience')">Work Experience</li>
             <li class="nav-link" onclick="scrollToSection('education')">Education</li>
             <li class="nav-link" onclick="scrollToSection('certifications')">Certifications</li>
+        </ul> -->
+        <ul class="nav-links">
+            <li class="nav-link" data-section="introduction">Profile</li>
+            <li class="nav-link" data-section="core-competencies">Core Competencies</li>
+            <li class="nav-link" data-section="work-experience">Work Experience</li>
+            <li class="nav-link" data-section="education">Education</li>
+            <li class="nav-link" data-section="certifications">Certifications</li>
         </ul>
     </aside>
 
@@ -435,32 +506,95 @@
             <h2>Work Experience</h2>
             
             <div class="experience-item">
-                <div class="job-title">Senior Software Engineer</div>
-                <div class="company">Tech Solutions Inc.</div>
-                <div class="date">January 2022 - Present</div>
+                <div class="job-title">Senior Support Services Officer</div>
+                <div class="company">Seneca Polytechnic</div>
+                <div class="date">November 2023 - Present</div>
+                <div class="sub-info">North York, Ontario, Canada | Regular part-time</div>
+                <div class="role-summary">Handles and manages vendor accounts and relationships in support of the Information Technology Solutions Department</div>
                 <div class="description">
-                    <p>Led the development of a cloud-based application that increased client productivity by 35%. Collaborated with cross-functional teams to implement new features and ensure seamless integration. Mentored junior developers and conducted code reviews to maintain high code quality standards.</p>
+                    <ul>
+                        <li>Manage supplier accounts and vendor relationships for the Information Technology Solutions Department</li>
+                        <li>Oversee procurement activities, including purchase requisitions and purchase order management</li>
+                        <li>Analyze procurement data to identify cost-saving opportunities and improve sourcing efficiency</li>
+                        <li>Ensure contract compliance and liaise with risk management for supplier risk assessments</li>
+                        <li>Develop reports for budget forecasting and expenditure tracking for software and hardware purchases</li>
+                    </ul>
                 </div>
             </div>
             
             <div class="experience-item">
-                <div class="job-title">Full Stack Developer</div>
-                <div class="company">Digital Innovations</div>
-                <div class="date">March 2019 - December 2021</div>
+                <div class="job-title">Senior Systems Specialist</div>
+                <div class="company">S&I System Pte Ltd (deployed to United Overseas Bank Singapore)</div>
+                <div class="date">August 2013 - July 2023</div>
+                <div class="role-summary">Provided Vendor/Project Management, Data Analysis & Technical Support to the Network, Storage and Data Centre & Facilities Management team</div>
                 <div class="description">
-                    <p>Developed and maintained multiple web applications using React, Node.js, and MongoDB. Implemented responsive design principles to ensure optimal user experience across all devices. Collaborated with UX designers to create intuitive user interfaces that resulted in a 25% increase in user engagement.</p>
+                    <ul>
+                        <li>Liaised with stakeholders regarding their project requirements (cabling & storage) and worked with vendors to fulfil the requirements</li>
+                        <li>Aided in the Company's Cabling Request for Proposal/Quotation to source cost-efficient viable vendors</li>
+                        <li>Monitored subscription-based agreements and ensured timely renewals and budget adherence</li>
+                        <li>Provided support and monitored the procurement of assets</li>
+                        <li>Generated and consolidated monthly Storage usage/allocation reports for cost planning and forecasting</li>
+                        <li>Updated the Network team's Line Database & prepared the Monthly Utilization Report</li>
+                        <li>Kept the Department's Inventory and IT Asset Management System up-to-date</li>
+                        <li>Checked and validated the Data Centre access logs monthly</li>
+                        <li>Supported and ensured timely delivery of structured cabling requests inside the Data Centres</li>
+                    </ul>
+                    <div class="achievements">
+                        <h4>Key Projects and Achievements</h4>
+                        <ul>
+                            <li>Conducted a Request for Quotation for the Bank's Structured Cabling System with the outcome of an annual projected cost savings of 16%</li>
+                            <li>Discovered billing discrepancies from a telecommunications service provider that resulted in a refund of ~$600k</li>
+                            <li>Maintained zero audit points for Data Centre Access Security review for 3 consecutive years</li>
+                            <li>Streamlined the cabling workflow to decrease lead time by 40%</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
+  
             <div class="experience-item">
-                <div class="job-title">Web Developer</div>
-                <div class="company">CreativeTech</div>
-                <div class="date">June 2017 - February 2019</div>
+                <div class="job-title">Interim Digital Libraries Supervisor</div>
+                <div class="company">C&E Publishing, Inc.</div>
+                <div class="date">January 2011 - June 2013</div>
+                <div class="location">Quezon City, Philippines</div>
+                <div class="role-summary">Facilitated the digitization efforts of the Educational Solutions Division</div>
                 <div class="description">
-                    <p>Built custom websites for clients using HTML, CSS, and JavaScript. Created and maintained WordPress sites with custom themes and plugins. Optimized website performance and implemented SEO best practices, resulting in improved search rankings for clients.</p>
+                    <ul>
+                        <li>Managed the division's Digital Asset Management System (DAMS), including metadata creation, asset uploading, and data retrieval planning</li>
+                        <li>Supervised inventory, cataloging, and indexing of digital products and source materials</li>
+                        <li>Collaborated with IT teams and vendors to maintain and enhance the digital library system</li>
+                        <li>Ensured digital products met quality standards and organized them in DAMS with proper meta-tagging</li>
+                    </ul>
+                    <div class="achievements">
+                        <h4>Key Projects and Achievements</h4>
+                        <ul>
+                            <li>Proposed and implemented enhancements to platforms and database systems for Digital Assets Management</li>
+                            <li>Supported content management initiatives for C&E's digital learning products</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+  
+            <div class="experience-item">
+                <div class="job-title">Digital Librarian</div>
+                <div class="company">C&E Publishing, Inc.</div>
+                <div class="date">July 2010 - January 2011</div>
+                <div class="location">Quezon City, Philippines</div>
+                <div class="description">
+                    <ul>
+                        <li>Digitized and uploaded e-journals, e-books, and other content to respective platforms</li>
+                        <li>Prepared usage tracking reports for review by the Department Heads</li>
+                        <li>Coordinated with editors for subscription renewals and negotiated agreements</li>
+                    </ul>
+                    <div class="achievements">
+                        <h4>Key Projects and Achievements</h4>
+                        <ul>
+                            <li>Philippine E-Journals (https://ejournals.ph) – a collection of academic journals made accessible globally through a single Web-based platform</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
+
 
         <section id="education" class="section">
             <h2>Education</h2>
@@ -506,63 +640,76 @@
         </section>
 
         <section id="certifications" class="section">
-            <h2>Certifications</h2>
+            <h2>Professional License</h2>
             
             <div class="certification-item">
-                <div class="cert-name">AWS Certified Solutions Architect</div>
-                <div class="cert-issuer">Amazon Web Services</div>
-                <div class="date">December 2023</div>
-            </div>
-            
-            <div class="certification-item">
-                <div class="cert-name">Google Professional Cloud Developer</div>
-                <div class="cert-issuer">Google Cloud</div>
-                <div class="date">March 2023</div>
-            </div>
-            
-            <div class="certification-item">
-                <div class="cert-name">Microsoft Certified: Azure Developer Associate</div>
-                <div class="cert-issuer">Microsoft</div>
-                <div class="date">August 2022</div>
-            </div>
-            
-            <div class="certification-item">
-                <div class="cert-name">Certified Scrum Master (CSM)</div>
-                <div class="cert-issuer">Scrum Alliance</div>
-                <div class="date">January 2021</div>
+                <div class="cert-name">Philippine Licensure Examination for Librarians</div>
+                <div class="cert-issuer">Professional Regulation Commission</div>
+                <div class="date">November 2011</div>
+                <div class="description">
+                    <p class="achievement">Rating: 86.30% (5th Place)</p>
+                </div>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Judith Gorospe. All rights reserved.</p>
         </footer>
     </main>
 
     <script>
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) / 2
+            );
+        }
+   
+        function updateActiveSection() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+   
+            sections.forEach(section => {
+                if (isInViewport(section)) {
+                    const sectionId = section.id;
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.dataset.section === sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+   
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({
                 behavior: 'smooth'
             });
-            
-            // Update active link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Set clicked link as active
-            event.target.classList.add('active');
         }
-        
-        // Make the sidebar links responsive
+   
         document.addEventListener('DOMContentLoaded', function() {
+            updateActiveSection();
+            window.addEventListener('scroll', updateActiveSection);
+   
+            // Updated click event handling
             const navLinks = document.querySelectorAll('.nav-link');
-            
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(l => l.classList.remove('active'));
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.dataset.section;
+                    scrollToSection(sectionId);
+                    
+                    // Update active state
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
                     this.classList.add('active');
                 });
             });
         });
     </script>
+
 </body>
 </html>
