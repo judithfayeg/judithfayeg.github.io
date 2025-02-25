@@ -5,257 +5,632 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judith Faye Gorospe - Resume</title>
     <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2980b9;
+            --accent-color: #3498db;
+            --light-accent: #ebf5fb;
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
+            color: var(--text-color);
+            background-color: var(--light-gray);
         }
         
-        header {
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+        }
+        
+        .profile {
             text-align: center;
             margin-bottom: 30px;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 20px;
         }
         
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+        }
+        
+        .profile h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
         }
         
         .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Education section with highlight */
+        .education {
+            margin-bottom: 30px;
+        }
+        
+        .education-item {
             margin-bottom: 15px;
         }
         
-        .summary {
-            text-align: justify;
-            margin-bottom: 30px;
+        .education-item:first-child {
+            background-color: var(--accent-color);
             padding: 15px;
-            background-color: #f1f8ff;
-            border-left: 4px solid #2c3e50;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
         }
         
-        h2 {
-            color: #2c3e50;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            margin-top: 25px;
+        .education-item:first-child::after {
+            content: "Current";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
         }
         
+        .education-item h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .education-item p {
+            font-size: 14px;
+        }
+        
+        .degree {
+            font-weight: bold;
+        }
+        
+        .gpa {
+            color: #f1c40f;
+            font-weight: bold;
+        }
+        
+        /* Main content */
+        .main-content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        /* Summary */
+        .summary {
+            background-color: var(--light-accent);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        /* Core competencies */
         .core-competencies {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
         }
         
-        .competency-column {
-            flex-basis: 48%;
+        .competency-card {
+            background-color: var(--light-accent);
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
         }
         
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
+        .competency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
+        .competency-icon {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .competency-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Work experience */
         .job {
             margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .job:last-child {
+            border-bottom: none;
+        }
+        
+        .job-header {
+            margin-bottom: 15px;
         }
         
         .job-title {
             font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 5px;
         }
         
-        .company {
-            font-style: italic;
-            margin-bottom: 5px;
+        .job-company {
+            font-weight: bold;
+        }
+        
+        .job-period {
+            color: var(--dark-gray);
+            font-size: 14px;
         }
         
         .job-description {
             font-style: italic;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
         }
         
-        .period {
-            color: #666;
-            font-size: 0.9em;
+        .job-duties {
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+        
+        .job-duties li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .job-duties li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
         
         .achievements {
-            margin-top: 10px;
+            background-color: var(--light-accent);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
         }
         
-        .achievements p {
+        .achievements-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .achievements ul {
+            list-style-type: none;
+        }
+        
+        .achievements li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .achievements li::before {
+            content: "★";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .highlighted {
+            background-color: #fffde7;
+            font-weight: bold;
+        }
+        
+        /* Certifications */
+        .certification {
+            background-color: var(--light-accent);
+            padding: 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .certification-title {
             font-weight: bold;
             margin-bottom: 5px;
         }
         
-        .education {
+        /* Skills section with progress bars */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .skill {
             margin-bottom: 15px;
         }
         
-        @media (max-width: 768px) {
-            .core-competencies {
-                flex-direction: column;
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: var(--medium-gray);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+        
+        .progress-95 {width: 95%;}
+        .progress-90 {width: 90%;}
+        .progress-85 {width: 85%;}
+        .progress-80 {width: 80%;}
+        
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
             }
             
-            .competency-column {
-                flex-basis: 100%;
+            .core-competencies {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .core-competencies {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>JUDITH FAYE GOROSPE</h1>
-        <div class="contact-info">
-            <p>TORONTO, ONTARIO, CANADA | Mobile: +1 6473915676 | Email: <a href="mailto:JUDITH.GOROSPE@GMAIL.COM">JUDITH.GOROSPE@GMAIL.COM</a></p>
-        </div>
-    </header>
-    
-    <section class="summary">
-        <p>Results-driven Procurement and Business Analytics Professional with over 10 years of experience in sourcing, vendor management, procurement, and data-driven decision-making. Expertise in supplier negotiations, contract compliance, cost optimization, and financial analysis. Adept at streamlining procurement processes and leveraging data analytics for insights into purchasing and inventory management. Highly skilled in ERP systems, reporting, and stakeholder collaboration.</p>
-    </section>
-    
-    <section>
-        <h2>CORE COMPETENCIES</h2>
-        <div class="core-competencies">
-            <div class="competency-column">
-                <ul>
-                    <li>Procurement & Sourcing Strategy (IT Software/Hardware, Ingredients, Materials)</li>
-                    <li>Supplier Management & Negotiation</li>
-                    <li>Data Analytics & Business Intelligence</li>
-                    <li>Financial Analysis & Cost Optimization</li>
-                    <li>Contract Compliance & Risk Mitigation</li>
-                </ul>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <div class="profile-img">JG</div>
+                <h1>JUDITH FAYE GOROSPE</h1>
+                <p>Procurement & Business Analytics Professional</p>
             </div>
-            <div class="competency-column">
-                <ul>
-                    <li>Process Improvement & Cost Savings Initiatives</li>
-                    <li>Inventory & Supply Chain Management</li>
-                    <li>Advanced Proficiency: Microsoft Excel (Pivot, VBA), Power BI, Tableau</li>
-                    <li>ERP Systems: SAP, PeopleSoft, ServiceNow</li>
-                    <li>SQL, Python, R (for Data Analysis)</li>
-                </ul>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Toronto, Ontario, Canada</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>+1 647 391 5676</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span><a href="mailto:JUDITH.GOROSPE@GMAIL.COM">JUDITH.GOROSPE@GMAIL.COM</a></span>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <section>
-        <h2>WORK EXPERIENCE</h2>
-        
-        <div class="job">
-            <p class="job-title">SENIOR SUPPORT SERVICES OFFICER <span class="period">(NOVEMBER 2023 - PRESENT, regular part-time)</span></p>
-            <p class="company">Seneca Polytechnic, North York, Ontario, Canada</p>
-            <p class="job-description">Handles and manages vendor accounts and relationships in support of the Information Technology Solutions Department</p>
-            <ul>
-                <li>Manage supplier accounts and vendor relationships for the Information Technology Solutions Department.</li>
-                <li>Oversee procurement activities, including purchase requisitions and purchase order management.</li>
-                <li>Analyze procurement data to identify cost-saving opportunities and improve sourcing efficiency.</li>
-                <li>Ensure contract compliance and liaise with risk management for supplier risk assessments.</li>
-                <li>Develop reports for budget forecasting and expenditure tracking for software and hardware purchases.</li>
-            </ul>
-        </div>
-        
-        <div class="job">
-            <p class="job-title">SENIOR SYSTEMS SPECIALIST <span class="period">(AUGUST 2013 - JULY 2023)</span></p>
-            <p class="company">S&I System Pte Ltd (deployed to United Overseas Bank Singapore)</p>
-            <p class="job-description">Provided Vendor/Project Management, Data Analysis & Technical Support to the Network, Storage and Data Centre & Facilities Management team of United Overseas Bank</p>
-            <ul>
-                <li>Liaised with stakeholders regarding their project requirements (cabling & storage) and worked with vendors to fulfil the requirements</li>
-                <li>Aided in the Company's Cabling Request for Proposal/Quotation to source cost-efficient viable vendors</li>
-                <li>Monitored subscription-based agreements and ensured timely renewals and budget adherence</li>
-                <li>Provided support and monitored the procurement of assets (sourcing of quotations, raising PR, cutting POs, processing of delivery orders)</li>
-                <li>Generated and consolidated monthly Storage usage/allocation reports for cost planning and forecasting</li>
-                <li>Updated the Network team's Line Database & prepared the Monthly Utilization Report to aid in Capacity Planning.</li>
-                <li>Kept the Department's Inventory and IT Asset Management System up-to-date</li>
-                <li>Checked and validated the Data Centre access logs monthly to flag unauthorized access to the DCs</li>
-                <li>Supported and ensured timely delivery of structured cabling requests inside the Data Centres</li>
-            </ul>
-            <div class="achievements">
-                <p>KEY PROJECTS AND ACHIEVEMENTS:</p>
-                <ul>
-                    <li>Conducted a Request for Quotation for the Bank's Structured Cabling System with the outcome of an <strong>annual projected cost savings of 16%</strong></li>
-                    <li>Discovered billing discrepancies from a telecommunications service provider that resulted in a <strong>refund of ~$600k</strong></li>
-                    <li>Maintained <strong>zero audit points</strong> for Data Centre Access Security review for 3 consecutive years</li>
-                    <li>Streamlined the cabling workflow to <strong>decrease lead time by 40%</strong></li>
-                </ul>
+            
+            <div class="education">
+                <h2>EDUCATION</h2>
+                
+                <div class="education-item">
+                    <h3>SENECA POLYTECHNIC</h3>
+                    <p class="period">2024 - Present (April 2025)</p>
+                    <p class="degree">Post-Graduate Certificate in Supply Chain Management — Global Logistics</p>
+                    <p class="gpa">Running GPA: 4.0</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>SENECA POLYTECHNIC</h3>
+                    <p class="period">2023 - 2024</p>
+                    <p class="degree">Post-Graduate Certificate in Business Analytics</p>
+                    <p class="gpa">High Honors</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>UNIVERSITY OF THE PHILIPPINES</h3>
+                    <p class="period">2007 - 2010</p>
+                    <p class="degree">Bachelor in Library and Information Science</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>UNIVERSITY OF THE PHILIPPINES</h3>
+                    <p class="period">2003 - 2007</p>
+                    <p class="degree">BS in Business Economics (2nd year)</p>
+                </div>
+            </div>
+            
+            <div class="certifications">
+                <h2>CERTIFICATIONS</h2>
+                <div class="certification">
+                    <p class="certification-title">PHILIPPINE LICENSURE EXAMINATION FOR LIBRARIANS</p>
+                    <p>November 2011</p>
+                    <p>Rating: 86.30%, <strong>5<sup>th</sup> place</strong></p>
+                </div>
             </div>
         </div>
         
-        <div class="job">
-            <p class="job-title">INTERIM DIGITAL LIBRARIES SUPERVISOR <span class="period">(JANUARY 2011 - JUNE 2013)</span></p>
-            <p class="company">C&E Publishing, Inc., Quezon City, Philippines</p>
-            <p class="job-description">Facilitated the digitization efforts of the Educational Solutions Division</p>
-            <ul>
-                <li>Managed the division's Digital Asset Management System (DAMS), including metadata creation, asset uploading, and data retrieval planning</li>
-                <li>Supervised inventory, cataloging, and indexing of digital products and source materials.</li>
-                <li>Collaborated with IT teams and vendors to maintain and enhance the digital library system</li>
-                <li>Ensured digital products met quality standards and organized them in DAMS with proper meta-tagging.</li>
-            </ul>
-            <div class="achievements">
-                <p>KEY PROJECTS AND ACHIEVEMENTS:</p>
-                <ul>
-                    <li>Proposed and implemented enhancements to platforms and database systems for Digital Assets Management</li>
-                    <li>Supported content management initiatives for C&E's digital learning products</li>
-                </ul>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="summary">
+                <p>Results-driven Procurement and Business Analytics Professional with over 10 years of experience in sourcing, vendor management, procurement, and data-driven decision-making. Expertise in supplier negotiations, contract compliance, cost optimization, and financial analysis. Adept at streamlining procurement processes and leveraging data analytics for insights into purchasing and inventory management. Highly skilled in ERP systems, reporting, and stakeholder collaboration.</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">CORE COMPETENCIES</h2>
+                <div class="core-competencies">
+                    <div class="competency-card">
+                        <div class="competency-icon">🔄</div>
+                        <div class="competency-title">Procurement & Sourcing</div>
+                        <p>IT Software/Hardware, Ingredients, Materials procurement strategies</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">🤝</div>
+                        <div class="competency-title">Supplier Management</div>
+                        <p>Negotiation, relationship building, performance evaluation</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">📊</div>
+                        <div class="competency-title">Data Analytics</div>
+                        <p>Business intelligence, dashboarding, predictive analytics</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">💰</div>
+                        <div class="competency-title">Financial Analysis</div>
+                        <p>Cost optimization, budget forecasting, ROI assessment</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">📝</div>
+                        <div class="competency-title">Contract Compliance</div>
+                        <p>Risk mitigation, legal review, performance monitoring</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">⚙️</div>
+                        <div class="competency-title">Process Improvement</div>
+                        <p>Cost savings initiatives, efficiency optimization</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">🏭</div>
+                        <div class="competency-title">Supply Chain</div>
+                        <p>Inventory management, logistics coordination</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">💻</div>
+                        <div class="competency-title">Technical Skills</div>
+                        <p>Excel (Pivot, VBA), Power BI, Tableau, SAP, SQL, Python, R</p>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-icon">🔍</div>
+                        <div class="competency-title">ERP Systems</div>
+                        <p>SAP, PeopleSoft, ServiceNow implementation and management</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">TECHNICAL PROFICIENCY</h2>
+                <div class="skills-container">
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>Microsoft Excel (Pivot, VBA)</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress progress-95"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>Power BI & Tableau</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress progress-90"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>ERP Systems (SAP, PeopleSoft)</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress progress-85"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>SQL, Python, R</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress progress-80"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">WORK EXPERIENCE</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">SENIOR SUPPORT SERVICES OFFICER</h3>
+                        <p><span class="job-company">Seneca Polytechnic</span> - <span class="job-location">North York, Ontario, Canada</span></p>
+                        <p class="job-period">NOVEMBER 2023 - PRESENT (regular part-time)</p>
+                    </div>
+                    <p class="job-description">Handles and manages vendor accounts and relationships in support of the Information Technology Solutions Department</p>
+                    <ul class="job-duties">
+                        <li>Manage supplier accounts and vendor relationships for the Information Technology Solutions Department.</li>
+                        <li>Oversee procurement activities, including purchase requisitions and purchase order management.</li>
+                        <li>Analyze procurement data to identify cost-saving opportunities and improve sourcing efficiency.</li>
+                        <li>Ensure contract compliance and liaise with risk management for supplier risk assessments.</li>
+                        <li>Develop reports for budget forecasting and expenditure tracking for software and hardware purchases.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">SENIOR SYSTEMS SPECIALIST</h3>
+                        <p><span class="job-company">S&I System Pte Ltd (deployed to United Overseas Bank Singapore)</span></p>
+                        <p class="job-period">AUGUST 2013 - JULY 2023</p>
+                    </div>
+                    <p class="job-description">Provided Vendor/Project Management, Data Analysis & Technical Support to the Network, Storage and Data Centre & Facilities Management team of United Overseas Bank</p>
+                    <ul class="job-duties">
+                        <li>Liaised with stakeholders regarding their project requirements (cabling & storage) and worked with vendors to fulfil the requirements</li>
+                        <li>Aided in the Company's Cabling Request for Proposal/Quotation to source cost-efficient viable vendors</li>
+                        <li>Monitored subscription-based agreements and ensured timely renewals and budget adherence</li>
+                        <li>Provided support and monitored the procurement of assets (sourcing of quotations, raising PR, cutting POs, processing of delivery orders)</li>
+                        <li>Generated and consolidated monthly Storage usage/allocation reports for cost planning and forecasting</li>
+                        <li>Updated the Network team's Line Database & prepared the Monthly Utilization Report to aid in Capacity Planning.</li>
+                        <li>Kept the Department's Inventory and IT Asset Management System up-to-date</li>
+                        <li>Checked and validated the Data Centre access logs monthly to flag unauthorized access to the DCs</li>
+                        <li>Supported and ensured timely delivery of structured cabling requests inside the Data Centres</li>
+                    </ul>
+                    <div class="achievements">
+                        <p class="achievements-title">KEY PROJECTS AND ACHIEVEMENTS:</p>
+                        <ul>
+                            <li>Conducted a Request for Quotation for the Bank's Structured Cabling System with the outcome of an <span class="highlighted">annual projected cost savings of 16%</span></li>
+                            <li>Discovered billing discrepancies from a telecommunications service provider that resulted in a <span class="highlighted">refund of ~$600k</span></li>
+                            <li>Maintained <span class="highlighted">zero audit points</span> for Data Centre Access Security review for 3 consecutive years</li>
+                            <li>Streamlined the cabling workflow to <span class="highlighted">decrease lead time by 40%</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">INTERIM DIGITAL LIBRARIES SUPERVISOR</h3>
+                        <p><span class="job-company">C&E Publishing, Inc.</span> - <span class="job-location">Quezon City, Philippines</span></p>
+                        <p class="job-period">JANUARY 2011 - JUNE 2013</p>
+                    </div>
+                    <p class="job-description">Facilitated the digitization efforts of the Educational Solutions Division</p>
+                    <ul class="job-duties">
+                        <li>Managed the division's Digital Asset Management System (DAMS), including metadata creation, asset uploading, and data retrieval planning</li>
+                        <li>Supervised inventory, cataloging, and indexing of digital products and source materials.</li>
+                        <li>Collaborated with IT teams and vendors to maintain and enhance the digital library system</li>
+                        <li>Ensured digital products met quality standards and organized them in DAMS with proper meta-tagging.</li>
+                    </ul>
+                    <div class="achievements">
+                        <p class="achievements-title">KEY PROJECTS AND ACHIEVEMENTS:</p>
+                        <ul>
+                            <li>Proposed and implemented enhancements to platforms and database systems for Digital Assets Management</li>
+                            <li>Supported content management initiatives for C&E's digital learning products</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <h3 class="job-title">DIGITAL LIBRARIAN</h3>
+                        <p><span class="job-company">C&E Publishing, Inc.</span> - <span class="job-location">Quezon City, Philippines</span></p>
+                        <p class="job-period">JULY 2010 - JANUARY 2011</p>
+                    </div>
+                    <ul class="job-duties">
+                        <li>Digitized and uploaded e-journals, e-books, and other content to respective platforms</li>
+                        <li>Prepared usage tracking reports for review by the Department Heads</li>
+                        <li>Coordinated with editors for subscription renewals and negotiated agreements</li>
+                    </ul>
+                    <div class="achievements">
+                        <p class="achievements-title">KEY PROJECTS AND ACHIEVEMENTS:</p>
+                        <ul>
+                            <li>Philippine E-Journals (<a href="https://ejournals.ph">https://ejournals.ph</a>) -- a collection of academic journals made accessible globally through a single Web-based platform.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="job">
-            <p class="job-title">DIGITAL LIBRARIAN <span class="period">(JULY 2010 - JANUARY 2011)</span></p>
-            <p class="company">C&E Publishing, Inc., Quezon City, Philippines</p>
-            <ul>
-                <li>Digitized and uploaded e-journals, e-books, and other content to respective platforms</li>
-                <li>Prepared usage tracking reports for review by the Department Heads</li>
-                <li>Coordinated with editors for subscription renewals and negotiated agreements</li>
-            </ul>
-            <div class="achievements">
-                <p>KEY PROJECTS AND ACHIEVEMENTS:</p>
-                <ul>
-                    <li>Philippine E-Journals (<a href="https://ejournals.ph">https://ejournals.ph</a>) -- a collection of academic journals made accessible globally through a single Web-based platform.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <section>
-        <h2>EDUCATION</h2>
-        
-        <div class="education">
-            <p><strong>2024-present SENECA POLYTECHNIC</strong> <em>(expected graduation date: April 2025)</em></p>
-            <p>Post-Graduate Certificate in Supply Chain Management -- Global Logistics, <strong><em>Running GPA: 4.0</em></strong></p>
-        </div>
-        
-        <div class="education">
-            <p><strong>2023-2024 SENECA POLYTECHNIC</strong></p>
-            <p>Post-Graduate Certificate in Business Analytics, <strong><em>High Honors</em></strong></p>
-        </div>
-        
-        <div class="education">
-            <p><strong>2007-2010 UNIVERSITY OF THE PHILIPPINES, DILIMAN</strong></p>
-            <p>Bachelor in Library and Information Science</p>
-        </div>
-        
-        <div class="education">
-            <p><strong>2003-2007 UNIVERSITY OF THE PHILIPPINES, DILIMAN</strong></p>
-            <p>Bachelor of Science in Business Economics, 2<sup>nd</sup> year</p>
-        </div>
-        
-        <div class="education">
-            <p><strong>1999-2003 MANILA SCIENCE HIGH SCHOOL (SECONDARY SCHOOL)</strong></p>
-        </div>
-    </section>
-    
-    <section>
-        <h2>CERTIFICATIONS</h2>
-        <p><strong>Nov, 2011 PHILIPPINE LICENSURE EXAMINATION FOR LIBRARIANS</strong></p>
-        <p>Rating: 86.30%, <strong><em>5<sup>th</sup> place</em></strong></p>
-    </section>
+    </div>
 </body>
 </html>
